@@ -20,7 +20,7 @@ def consultar_llama(prompt):
         client = Groq(api_key=groq_key)
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="llama3-8b-8192",
+            model="llama-3.1-8b-instant",
             temperature=0.5
         )
         return chat_completion.choices[0].message.content
