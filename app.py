@@ -12,119 +12,117 @@ st.set_page_config(
 )
 
 # =========================
-# ESTILOS RESPONSIVE / MOBILE
+# ESTILOS
 # =========================
 st.markdown("""
 <style>
     .block-container {
-        padding-top: 1.2rem;
+        padding-top: 1rem;
         padding-bottom: 2rem;
         padding-left: 1rem;
         padding-right: 1rem;
         max-width: 1100px;
     }
 
-    .hero-box {
+    .hero {
         background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
-        padding: 1.3rem;
-        border-radius: 20px;
         color: white;
+        padding: 1.2rem;
+        border-radius: 22px;
         margin-bottom: 1rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.16);
     }
 
-    .hero-title {
+    .hero h1 {
+        margin: 0;
         font-size: 2rem;
-        font-weight: 800;
-        margin-bottom: 0.4rem;
         line-height: 1.1;
     }
 
-    .hero-subtitle {
-        font-size: 1rem;
-        opacity: 0.92;
+    .hero p {
+        margin-top: 0.5rem;
         margin-bottom: 0;
+        opacity: 0.95;
+        font-size: 1rem;
     }
 
-    .info-card {
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        padding: 1rem;
-        border-radius: 16px;
-        margin-bottom: 1rem;
-        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
-    }
-
-    .mini-badge {
+    .chip {
         display: inline-block;
+        background: #eef2ff;
+        color: #3730a3;
         padding: 0.35rem 0.7rem;
         border-radius: 999px;
-        background: #eef2ff;
-        color: #4338ca;
         font-size: 0.85rem;
-        font-weight: 600;
+        font-weight: 700;
         margin-right: 0.4rem;
         margin-bottom: 0.4rem;
     }
 
-    .section-title {
-        font-size: 1.2rem;
+    .card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+    }
+
+    .card-title {
+        font-size: 1.15rem;
         font-weight: 800;
-        margin-top: 0.4rem;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
         color: #111827;
     }
 
+    .small-note {
+        color: #6b7280;
+        font-size: 0.93rem;
+    }
+
+    .chat-user {
+        background: #eef2ff;
+        border-radius: 16px;
+        padding: 0.8rem 1rem;
+        margin: 0.4rem 0;
+    }
+
+    .chat-ai {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        padding: 0.8rem 1rem;
+        margin: 0.4rem 0 1rem 0;
+    }
+
     .diploma-box {
-        border: 4px solid #4f46e5;
-        padding: 28px;
+        border: 4px solid #4338ca;
         border-radius: 20px;
+        padding: 28px;
         background: linear-gradient(180deg, #ffffff, #eef2ff);
-        color: #1f2937;
         margin-top: 1rem;
-        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.10);
+        box-shadow: 0 10px 30px rgba(67, 56, 202, 0.12);
     }
 
     .diploma-title {
         text-align: center;
-        color: #312e81;
         font-size: 2rem;
         font-weight: 900;
-        margin-bottom: 0.3rem;
+        color: #312e81;
+        margin-bottom: 0.2rem;
     }
 
     .diploma-sub {
         text-align: center;
-        font-size: 1rem;
-        margin-bottom: 1rem;
         color: #374151;
-    }
-
-    .small-note {
-        font-size: 0.92rem;
-        color: #6b7280;
-    }
-
-    .feature-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
 
     @media (max-width: 768px) {
-        .block-container {
-            padding-top: 0.8rem;
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-        }
-
-        .hero-title {
+        .hero h1 {
             font-size: 1.6rem;
         }
 
-        .hero-subtitle {
+        .hero p {
             font-size: 0.95rem;
         }
 
@@ -136,12 +134,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# CABECERA
+# HEADER
 # =========================
 st.markdown("""
-<div class="hero-box">
-    <div class="hero-title">🎓 Sensitive Study</div>
-    <p class="hero-subtitle">
+<div class="hero">
+    <h1>🎓 Sensitive Study</h1>
+    <p>
         Tu espacio de estudio con IA: chat, resúmenes, OCR, quizzes y diploma.
         Funciona con tu propia API de Groq.
     </p>
@@ -149,47 +147,76 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div class="feature-grid">
-    <span class="mini-badge">💬 Chat IA</span>
-    <span class="mini-badge">📄 PDF</span>
-    <span class="mini-badge">📷 OCR</span>
-    <span class="mini-badge">🧠 Quiz</span>
-    <span class="mini-badge">⚡ Modo rápido</span>
-    <span class="mini-badge">🎓 Diploma</span>
-</div>
+<span class="chip">💬 Chat IA</span>
+<span class="chip">📄 PDF</span>
+<span class="chip">📷 OCR</span>
+<span class="chip">🧠 Quiz</span>
+<span class="chip">⚡ Modo rápido</span>
+<span class="chip">🎓 Diploma</span>
 """, unsafe_allow_html=True)
 
 # =========================
-# CONFIG API
+# SESSION STATE
 # =========================
-st.markdown('<div class="info-card">', unsafe_allow_html=True)
-st.markdown("### 🔐 Activación")
-st.caption("Pegá tu propia API de Groq para usar tu IA. Así cada usuario controla su consumo.")
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
 
-groq_key = st.text_input("Groq API Key", type="password", placeholder="Pegá acá tu key de Groq")
+if "texto_pdf" not in st.session_state:
+    st.session_state.texto_pdf = ""
+
+if "texto_ocr" not in st.session_state:
+    st.session_state.texto_ocr = ""
+
+if "archivo_nombre" not in st.session_state:
+    st.session_state.archivo_nombre = "Estudio General"
+
+if "chat_input_prefill" not in st.session_state:
+    st.session_state.chat_input_prefill = ""
+
+# Si en local Tesseract no se detecta, descomentá esta línea:
+# pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+
+# =========================
+# API
+# =========================
+st.markdown('<div class="card">', unsafe_allow_html=True)
+st.markdown('<div class="card-title">🔐 Activación</div>', unsafe_allow_html=True)
+st.write("Pegá tu API de Groq. Cada usuario usa su propia IA.")
+
+groq_key = st.text_input(
+    "Groq API Key",
+    type="password",
+    placeholder="Pegá acá tu key"
+)
 
 st.markdown(
-    '<p class="small-note">Tu clave no se guarda en esta versión. Cada usuario usa su propia API.</p>',
+    '<div class="small-note">Tu clave no se guarda en esta versión. Cada usuario usa su propia API.</div>',
     unsafe_allow_html=True
 )
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Si Tesseract no se detecta en tu compu local, descomentá esta línea y ajustá la ruta:
-# pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-
-def consultar_llama(prompt: str):
+def cliente_groq():
     if not groq_key:
         st.error("Primero pegá tu API key de Groq.")
         return None
+    try:
+        return Groq(api_key=groq_key)
+    except Exception as e:
+        st.error(f"Error creando cliente Groq: {e}")
+        return None
+
+def preguntar_groq(messages, model="llama-3.1-8b-instant"):
+    client = cliente_groq()
+    if not client:
+        return None
 
     try:
-        client = Groq(api_key=groq_key)
-        chat_completion = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt}],
-            model="llama-3.1-8b-instant",
-            temperature=0.5
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            temperature=0.6
         )
-        return chat_completion.choices[0].message.content
+        return response.choices[0].message.content
     except Exception as e:
         st.error(f"Error con Groq: {e}")
         return None
@@ -197,12 +224,12 @@ def consultar_llama(prompt: str):
 def extraer_texto_pdf(archivo_pdf):
     try:
         reader = PdfReader(archivo_pdf)
-        texto_pdf = ""
+        texto = ""
         for page in reader.pages:
-            texto_pagina = page.extract_text()
-            if texto_pagina:
-                texto_pdf += texto_pagina + "\n"
-        return texto_pdf.strip()
+            txt = page.extract_text()
+            if txt:
+                texto += txt + "\n"
+        return texto.strip()
     except Exception as e:
         st.error(f"Error leyendo PDF: {e}")
         return ""
@@ -217,261 +244,60 @@ def extraer_texto_imagen(archivo_imagen):
         return ""
 
 # =========================
-# TABS PRINCIPALES
+# TABS
 # =========================
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "💬 Chat",
     "📄 PDF",
     "📷 OCR",
     "🧠 Quiz",
-    "⚡ Estudio rápido",
+    "⚡ Modo rápido",
     "🎓 Diploma"
 ])
 
 # =========================
-# TAB CHAT
+# CHAT
 # =========================
 with tab1:
-    st.markdown('<div class="section-title">Chat con tu IA</div>', unsafe_allow_html=True)
-    st.caption("Usalo como un mini ChatGPT para estudiar, repasar o pedir explicaciones.")
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+    st.markdown('<div class="card-title">Chat de estudio</div>', unsafe_allow_html=True)
+    st.caption("Ahora el chat guarda contexto y responde mejor.")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        if st.button("Explicame este tema", use_container_width=True):
+            st.session_state.chat_input_prefill = "Explicame este tema de forma clara, con ejemplo y puntos clave."
+
+    with col2:
+        if st.button("Haceme preguntas", use_container_width=True):
+            st.session_state.chat_input_prefill = "Haceme 5 preguntas para comprobar si entendí este tema."
+
+    with col3:
+        if st.button("Tomame mini examen", use_container_width=True):
+            st.session_state.chat_input_prefill = "Tomame un mini examen de 3 preguntas sobre este tema."
 
     mensaje = st.text_area(
         "Escribí tu mensaje",
-        placeholder="Ejemplo: Explicame qué es la teoría de sistemas en lenguaje simple.",
-        height=140
+        value=st.session_state.chat_input_prefill,
+        placeholder="Ejemplo: explicame este tema paso a paso y después haceme preguntas.",
+        height=120,
+        key="chat_box"
     )
 
-    if st.button("Enviar mensaje", use_container_width=True):
+    a, b = st.columns([3, 1])
+    with a:
+        enviar = st.button("Enviar mensaje", use_container_width=True)
+    with b:
+        limpiar = st.button("Limpiar chat", use_container_width=True)
+
+    if limpiar:
+        st.session_state.chat_history = []
+        st.session_state.chat_input_prefill = ""
+        st.rerun()
+
+    if enviar:
         if mensaje.strip():
-            respuesta = consultar_llama(mensaje)
-            if respuesta:
-                st.markdown("#### Respuesta")
-                st.write(respuesta)
-        else:
-            st.warning("Escribí algo primero.")
-
-# =========================
-# TAB PDF
-# =========================
-with tab2:
-    st.markdown('<div class="section-title">Subir PDF</div>', unsafe_allow_html=True)
-    st.caption("Subí apuntes o material de estudio y generá un resumen claro.")
-
-    archivo_pdf = st.file_uploader(
-        "Elegí un PDF",
-        type=["pdf"],
-        key="pdf_uploader"
-    )
-
-    if archivo_pdf:
-        texto_pdf = extraer_texto_pdf(archivo_pdf)
-        if texto_pdf:
-            st.session_state["texto_pdf"] = texto_pdf
-            st.session_state["archivo_nombre"] = archivo_pdf.name
-            st.success(f"PDF cargado: {archivo_pdf.name}")
-        else:
-            st.warning("No se pudo extraer texto del PDF.")
-
-    if st.button("Generar resumen del PDF", use_container_width=True):
-        if "texto_pdf" in st.session_state:
-            prompt_resumen = f"""
-Actuá como tutor.
-Resumí este documento de forma clara y ordenada.
-Después agregá 3 puntos clave.
-Usá un tono útil para estudiar.
-
-Documento:
-{st.session_state["texto_pdf"][:4000]}
-"""
-            resumen = consultar_llama(prompt_resumen)
-            if resumen:
-                st.markdown("#### Resumen del PDF")
-                st.write(resumen)
-        else:
-            st.warning("Primero subí un PDF.")
-
-# =========================
-# TAB OCR
-# =========================
-with tab3:
-    st.markdown('<div class="section-title">Foto / OCR</div>', unsafe_allow_html=True)
-    st.caption("Ideal para usar desde el celu con una foto de apuntes, hojas o capturas.")
-
-    archivo_imagen = st.file_uploader(
-        "Subí una foto o imagen",
-        type=["png", "jpg", "jpeg", "webp"],
-        key="img_uploader"
-    )
-
-    if archivo_imagen:
-        st.image(archivo_imagen, caption="Imagen cargada", use_container_width=True)
-
-        if st.button("Leer texto de la imagen", use_container_width=True):
-            texto_ocr = extraer_texto_imagen(archivo_imagen)
-
-            if texto_ocr:
-                st.session_state["texto_ocr"] = texto_ocr
-                st.success("Texto extraído con OCR.")
-                st.text_area("Texto detectado", texto_ocr, height=220)
-            else:
-                st.warning("No se pudo leer texto de la imagen.")
-
-    if st.button("Resumir texto de la imagen", use_container_width=True):
-        if "texto_ocr" in st.session_state and st.session_state["texto_ocr"].strip():
-            prompt_ocr = f"""
-Resumí este texto extraído de una imagen.
-Luego agregá 3 ideas principales y una mini explicación simple.
-
-Texto:
-{st.session_state["texto_ocr"][:4000]}
-"""
-            resumen_ocr = consultar_llama(prompt_ocr)
-            if resumen_ocr:
-                st.markdown("#### Resumen del OCR")
-                st.write(resumen_ocr)
-        else:
-            st.warning("Primero subí una imagen y ejecutá el OCR.")
-
-# =========================
-# TAB QUIZ
-# =========================
-with tab4:
-    st.markdown('<div class="section-title">Generador de quiz</div>', unsafe_allow_html=True)
-    st.caption("Podés generar preguntas desde un PDF, una foto o un tema general.")
-
-    fuente_quiz = st.radio(
-        "Fuente del quiz",
-        ["Tema general", "PDF cargado", "Texto OCR de imagen"],
-        horizontal=True
-    )
-
-    if st.button("Generar quiz", use_container_width=True):
-        if fuente_quiz == "PDF cargado" and "texto_pdf" in st.session_state:
-            prompt_quiz = f"""
-Basado en este texto, generá 5 preguntas multiple choice con 4 opciones cada una.
-Marcá claramente la respuesta correcta.
-Al final agregá una mini explicación por pregunta.
-
-Texto:
-{st.session_state["texto_pdf"][:3000]}
-"""
-        elif fuente_quiz == "Texto OCR de imagen" and "texto_ocr" in st.session_state:
-            prompt_quiz = f"""
-Basado en este texto extraído con OCR, generá 5 preguntas multiple choice con 4 opciones cada una.
-Marcá claramente la respuesta correcta.
-Al final agregá una mini explicación por pregunta.
-
-Texto:
-{st.session_state["texto_ocr"][:3000]}
-"""
-        else:
-            prompt_quiz = """
-Generá 5 preguntas multiple choice con 4 opciones cada una sobre un tema general de estudio.
-Marcá claramente la respuesta correcta y agregá una mini explicación por pregunta.
-"""
-
-        quiz = consultar_llama(prompt_quiz)
-        if quiz:
-            st.markdown("#### Quiz")
-            st.write(quiz)
-
-# =========================
-# TAB ESTUDIO RÁPIDO
-# =========================
-with tab5:
-    st.markdown('<div class="section-title">Modo estudio rápido</div>', unsafe_allow_html=True)
-    st.caption("Elegí un tema y recibí resumen, conceptos clave y una mini guía para repasar.")
-
-    tema_rapido = st.text_input(
-        "Tema a estudiar",
-        placeholder="Ejemplo: Relaciones públicas, anatomía, derecho administrativo, CSS..."
-    )
-
-    if st.button("Activar modo estudio rápido", use_container_width=True):
-        if tema_rapido.strip():
-            prompt_rapido = f"""
-Quiero estudiar este tema: {tema_rapido}
-
-Armá una respuesta con esta estructura:
-1. Explicación simple
-2. 5 conceptos clave
-3. 3 preguntas para autoevaluarme
-4. Un mini consejo para memorizarlo mejor
-
-Usá un tono claro, didáctico y útil.
-"""
-            resultado_rapido = consultar_llama(prompt_rapido)
-            if resultado_rapido:
-                st.markdown("#### Guía rápida")
-                st.write(resultado_rapido)
-        else:
-            st.warning("Escribí un tema primero.")
-
-# =========================
-# TAB DIPLOMA
-# =========================
-with tab6:
-    st.markdown('<div class="section-title">Evaluación y diploma</div>', unsafe_allow_html=True)
-    st.caption("Respondé una consigna y la IA decide si aprobás.")
-
-    contexto_eval = st.radio(
-        "Contexto para evaluar",
-        ["Sin contexto", "Usar PDF", "Usar OCR de imagen"],
-        horizontal=True
-    )
-
-    respuesta_usuario = st.text_area(
-        "Escribí tu respuesta",
-        placeholder="Explicá lo que aprendiste o respondé una consigna.",
-        height=180
-    )
-
-    if st.button("Evaluar y emitir diploma", use_container_width=True):
-        if respuesta_usuario.strip():
-            contexto = ""
-            tema = "Estudio General"
-
-            if contexto_eval == "Usar PDF" and "texto_pdf" in st.session_state:
-                contexto = st.session_state["texto_pdf"][:1500]
-                tema = st.session_state.get("archivo_nombre", "PDF").replace(".pdf", "")
-            elif contexto_eval == "Usar OCR de imagen" and "texto_ocr" in st.session_state:
-                contexto = st.session_state["texto_ocr"][:1500]
-                tema = "Texto extraído de imagen"
-
-            prompt_eval = f"""
-Actuá como evaluador académico.
-
-Contexto del material:
-{contexto}
-
-Respuesta del alumno:
-{respuesta_usuario}
-
-Respondé SOLO una palabra:
-APROBADO
-o
-REPROBADO
-"""
-            resultado = consultar_llama(prompt_eval)
-
-            if resultado and "APROBADO" in resultado.upper():
-                st.success("¡Aprobado!")
-                st.balloons()
-
-                st.markdown(f"""
-                <div class="diploma-box">
-                    <div class="diploma-title">CERTIFICADO DE LOGRO</div>
-                    <div class="diploma-sub">Sensitive Study</div>
-                    <p style="text-align:center; font-size: 18px;">
-                        Se certifica que completaste satisfactoriamente:
-                    </p>
-                    <h2 style="text-align:center; margin-top: 8px;">{tema}</h2>
-                    <p style="text-align:center; margin-top: 20px;">
-                        Validado con IA • Fecha: {datetime.datetime.now().strftime('%d/%m/%Y')}
-                    </p>
-                </div>
-                """, unsafe_allow_html=True)
-            else:
-                st.error("La evaluación fue reprobada. Probá de nuevo.")
-        else:
-            st.warning("Escribí una respuesta primero.")
+            system_prompt = """
+Sos Sensitive Study, un tutor académico en español.
+Respondé de
