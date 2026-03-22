@@ -2,4 +2,8 @@ streamlit
 groq
 PyPDF2
 pytesseract
+Pillowstreamlit
+groq
+PyPDF2
+pytesseract
 Pillow
