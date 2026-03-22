@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study AI</title>
+</head>
+<body>
+
+<h1>🤖 Study AI</h1>
+
+<!-- CHAT -->
+<h2>💬 Chat</h2>
+<div id="chat"></div>
+
+<input id="input" placeholder="Escribí..." />
+<button onclick="enviar()">Enviar</button>
+
+<!-- PDF -->
+<h2>📚 Subir PDF</h2>
+<input type="file" id="pdf" />
+<button onclick="leerPDF()">Procesar PDF</button>
+
+<pre id="resumen"></pre>
+
+<!-- QUIZ -->
+<h2>🧠 Quiz</h2>
+<button onclick="quiz()">Generar Quiz</button>
+<pre id="quiz"></pre>
+
+<!-- DIPLOMA -->
+<h2>🎓 Evaluación</h2>
+<textarea id="respuesta"></textarea>
+<br>
+<button onclick="evaluar()">Obtener diploma</button>
+<p id="resultado"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<script>
+async function enviar() {
+  const input = document.getElementById("input");
+  const chat = document.getElementById("chat");
+
+  chat.innerHTML += "<p><b>Vos:</b> " + input.value + "</p>";
+
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    body: JSON.stringify({ tipo: "chat", mensaje: input.value })
+  });
+
+  const data = await res.json();
+
+  chat.innerHTML += "<p><b>IA:</b> " + data.respuesta + "</p>";
+  input.value = "";
+}
+
+async function leerPDF() {
+  const file = document.getElementById("pdf").files[0];
+  const reader = new FileReader();
+
+  reader.onload = async function() {
+    const typedarray = new Uint8Array(this.result);
+
+    const pdf = await pdfjsLib.getDocument(typedarray).promise;
+    let texto = "";
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      content.items.forEach(item => texto += item.str + " ");
+    }
+
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      body: JSON.stringify({ tipo: "resumen", texto: texto })
+    });
+
+    const data = await res.json();
+    document.getElementById("resumen").innerText = data.resultado;
+  };
+
+  reader.readAsArrayBuffer(file);
+}
+
+async function quiz() {
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    body: JSON.stringify({ tipo: "quiz" })
+  });
+
+  const data = await res.json();
+  document.getElementById("quiz").innerText = data.quiz;
+}
+
+async function evaluar() {
+  const respuesta = document.getElementById("respuesta").value;
+
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    body: JSON.stringify({ tipo: "evaluar", respuesta })
+  });
+
+  const data = await res.json();
+
+  if (data.resultado.includes("APROBADO")) {
+    document.getElementById("resultado").innerText = "🎉 APROBADO — Diploma conseguido";
+  } else {
+    document.getElementById("resultado").innerText = "❌ REPROBADO";
+  }
+}
+</script>
+
+</body>
+</html>
